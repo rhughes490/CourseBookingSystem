@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "customers")
-public class Customer implements Serializable {
+public class Customer{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,8 +24,8 @@ public class Customer implements Serializable {
     @Column(name = "age")
     private int age;
 
-    @JsonIgnoreProperties({"customers"})
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"customer"})
     private List<Booking> bookings;
 
     public Customer(String name, String town, int age) {

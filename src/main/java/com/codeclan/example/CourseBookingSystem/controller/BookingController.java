@@ -1,5 +1,6 @@
 package com.codeclan.example.CourseBookingSystem.controller;
 
+import com.codeclan.example.CourseBookingSystem.models.Booking;
 import com.codeclan.example.CourseBookingSystem.models.Customer;
 import com.codeclan.example.CourseBookingSystem.repository.BookingRepository;
 import com.codeclan.example.CourseBookingSystem.repository.CourseRepository;
@@ -12,6 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class BookingController {
 
@@ -19,7 +22,7 @@ public class BookingController {
     BookingRepository bookingRepository;
 
     @GetMapping(value = "/bookings")
-    public ResponseEntity getAllBookingsAndFilters(
+    public ResponseEntity<List<Booking>> getAllBookingsAndFilters(
             @RequestParam(required = false, name = "date") String date
     ){
         if(date != null){

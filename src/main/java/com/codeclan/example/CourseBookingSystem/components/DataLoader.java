@@ -5,13 +5,13 @@ import com.codeclan.example.CourseBookingSystem.models.Course;
 import com.codeclan.example.CourseBookingSystem.models.Customer;
 import com.codeclan.example.CourseBookingSystem.repository.BookingRepository;
 
-import com.codeclan.example.CourseBookingSystem.repository.BookingRepository;
 import com.codeclan.example.CourseBookingSystem.repository.CourseRepository;
 import com.codeclan.example.CourseBookingSystem.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
-
+import org.springframework.stereotype.Component;
+@Component
 public class DataLoader implements ApplicationRunner {
     
     @Autowired
@@ -26,7 +26,6 @@ public class DataLoader implements ApplicationRunner {
     public DataLoader(){
 
     }
-
     public void run(ApplicationArguments args) {
         Customer customer1 = new Customer("Jack", "Tadcaster", 25);
         customerRepository.save(customer1);
@@ -41,7 +40,7 @@ public class DataLoader implements ApplicationRunner {
         customerRepository.save(customer2);
 
         Course course2 = new Course("Programming in Python", "Glasgow", 5);
-        courseRepository.save(course1);
+        courseRepository.save(course2);
 
         Booking booking2 = new Booking("25/10/25", customer2, course2);
         bookingRepository.save(booking2);
@@ -54,7 +53,7 @@ public class DataLoader implements ApplicationRunner {
 
         Booking booking3 = new Booking("12/12/22", customer3, course3);
         bookingRepository.save(booking3);
-        
+
         Customer customer4 = new Customer("Paul", "Belfast", 28);
         customerRepository.save(customer4);
 
@@ -72,7 +71,7 @@ public class DataLoader implements ApplicationRunner {
 
         Booking booking5 = new Booking("01/12/25", customer5, course5);
         bookingRepository.save(booking5);
-        
+
 
 
 

@@ -1,8 +1,10 @@
 package com.codeclan.example.CourseBookingSystem.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,13 +20,13 @@ public class Booking {
     @Column(name = "date")
     private String date;
 
-    @JsonBackReference
     @ManyToOne
+    @JsonIgnoreProperties({"bookings"})
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;
 
-    @JsonBackReference
     @ManyToOne
+    @JsonIgnoreProperties({"bookings"})
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
@@ -52,19 +54,19 @@ public class Booking {
         this.date = date;
     }
 
-    public Course getCourses() {
+    public Course getCourse() {
         return course;
     }
 
-    public void setCourses(Course courses) {
-        this.course = courses;
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
-    public Customer getCustomers() {
+    public Customer getCustomer() {
         return customer;
     }
 
-    public void setCustomers(Customer customers) {
-        this.customer = customers;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }
